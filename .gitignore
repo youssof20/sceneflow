@@ -33,4 +33,7 @@ desktop.ini
 *.swp
 *.swo
 
-\n# Keep Pro/demo out of Lite GitHub repo\naddons/sceneflow_pro/\ndemo/\nproject.godot\n
+# Keep Pro/demo out of Lite GitHub repo
+addons/sceneflow_pro/
+demo/
+project.godot
