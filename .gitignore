@@ -1,0 +1,36 @@
+# Godot (general)
+.godot/
+.import/
+*.import
+*.translation
+
+# Godot UID sidecars (regenerated)
+*.uid
+
+# Mono / .NET (if user enables)
+.mono/
+
+# Exported builds
+builds/
+export/
+*.pck
+*.zip
+
+# Local release artifacts
+dist/
+
+# Internal docs (do not publish)
+PACKAGING.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+\n# Keep Pro/demo out of Lite GitHub repo\naddons/sceneflow_pro/\ndemo/\nproject.godot\n

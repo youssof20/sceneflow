@@ -1,0 +1,175 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/sceneflow/editor/sceneflow_dock.gd" id="1_4j67a"]
+
+[node name="SceneFlowDock" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+theme_override_constants/separation = 10
+script = ExtResource("1_4j67a")
+
+[node name="Header" type="Label" parent="."]
+text = "SceneFlow"
+theme_override_font_sizes/font_size = 18
+
+[node name="Row" type="HBoxContainer" parent="."]
+
+[node name="Label" type="Label" parent="Row"]
+text = "Current edited scene:"
+
+[node name="CurrentSceneLabel" type="Label" parent="Row"]
+unique_name_in_owner = true
+text = "(...)"
+size_flags_horizontal = 3
+
+[node name="Separator" type="HSeparator" parent="."]
+
+[node name="RuntimeHeader" type="Label" parent="."]
+text = "Runtime"
+
+[node name="RuntimeRow" type="HBoxContainer" parent="."]
+
+[node name="ProEnabled" type="CheckBox" parent="RuntimeRow"]
+unique_name_in_owner = true
+text = "Enable Pro runtime (if installed)"
+size_flags_horizontal = 3
+
+[node name="AutoloadPath" type="Label" parent="."]
+unique_name_in_owner = true
+text = "SceneManager autoload: (unknown)"
+modulate = Color(1, 1, 1, 0.75)
+
+[node name="RestartBanner" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="RestartLabel" type="Label" parent="RestartBanner"]
+unique_name_in_owner = true
+text = "Restart play session to apply (ProjectSettings autoload changes only load on startup)."
+autowrap_mode = 3
+
+[node name="OpenRow" type="HBoxContainer" parent="."]
+
+[node name="OpenGallery" type="Button" parent="OpenRow"]
+unique_name_in_owner = true
+text = "Open Gallery"
+
+[node name="OpenShowcase" type="Button" parent="OpenRow"]
+unique_name_in_owner = true
+text = "Open Showcase"
+
+[node name="Separator2" type="HSeparator" parent="."]
+
+[node name="PresetHeader" type="Label" parent="."]
+text = "Transition preset"
+
+[node name="PresetGrid" type="GridContainer" parent="."]
+columns = 2
+
+[node name="TransitionLabel" type="Label" parent="PresetGrid"]
+text = "Transition"
+
+[node name="TransitionOption" type="OptionButton" parent="PresetGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="DurationLabel" type="Label" parent="PresetGrid"]
+text = "Duration"
+
+[node name="Duration" type="SpinBox" parent="PresetGrid"]
+unique_name_in_owner = true
+min_value = 0.0
+max_value = 5.0
+step = 0.05
+value = 0.3
+allow_greater = true
+size_flags_horizontal = 3
+
+[node name="ColorLabel" type="Label" parent="PresetGrid"]
+unique_name_in_owner = true
+text = "Color (Pro)"
+
+[node name="Color" type="ColorPickerButton" parent="PresetGrid"]
+unique_name_in_owner = true
+
+[node name="CircleFeatherLabel" type="Label" parent="PresetGrid"]
+unique_name_in_owner = true
+text = "Circle feather (Pro)"
+
+[node name="CircleFeather" type="HSlider" parent="PresetGrid"]
+unique_name_in_owner = true
+min_value = 0.0
+max_value = 0.2
+step = 0.005
+value = 0.06
+size_flags_horizontal = 3
+
+[node name="DissolveCellsLabel" type="Label" parent="PresetGrid"]
+unique_name_in_owner = true
+text = "Dissolve cells (Pro)"
+
+[node name="DissolveCells" type="HSlider" parent="PresetGrid"]
+unique_name_in_owner = true
+min_value = 40.0
+max_value = 500.0
+step = 1.0
+value = 220.0
+size_flags_horizontal = 3
+
+[node name="LumaTextureLabel" type="Label" parent="PresetGrid"]
+unique_name_in_owner = true
+text = "Luma mask (Pro)"
+
+[node name="LumaRow" type="HBoxContainer" parent="PresetGrid"]
+size_flags_horizontal = 3
+
+[node name="LumaTexturePath" type="LineEdit" parent="PresetGrid/LumaRow"]
+unique_name_in_owner = true
+placeholder_text = "res://path/to/mask.png"
+size_flags_horizontal = 3
+
+[node name="BrowseLumaTexture" type="Button" parent="PresetGrid/LumaRow"]
+unique_name_in_owner = true
+text = "Browse"
+
+[node name="CaptureSource" type="CheckBox" parent="PresetGrid"]
+unique_name_in_owner = true
+text = "Capture viewport as source (Pro)"
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="PresetGrid"]
+custom_minimum_size = Vector2(0, 0)
+
+[node name="ActionsRow" type="HBoxContainer" parent="."]
+
+[node name="TargetScenePath" type="LineEdit" parent="ActionsRow"]
+unique_name_in_owner = true
+placeholder_text = "res://demo/transition_gallery_a.tscn"
+size_flags_horizontal = 3
+
+[node name="CopyCode" type="Button" parent="ActionsRow"]
+unique_name_in_owner = true
+text = "Copy code"
+
+[node name="QuickRow" type="HBoxContainer" parent="."]
+
+[node name="QuickScenePath" type="LineEdit" parent="QuickRow"]
+unique_name_in_owner = true
+placeholder_text = "res://demo/main_menu.tscn"
+size_flags_horizontal = 3
+
+[node name="QuickOpen" type="Button" parent="QuickRow"]
+text = "Open"
+
+[connection signal="toggled" from="RuntimeRow/ProEnabled" to="." method="_on_pro_enabled_toggled"]
+[connection signal="pressed" from="OpenRow/OpenGallery" to="." method="_on_open_gallery_pressed"]
+[connection signal="pressed" from="OpenRow/OpenShowcase" to="." method="_on_open_showcase_pressed"]
+[connection signal="pressed" from="PresetGrid/LumaRow/BrowseLumaTexture" to="." method="_on_browse_luma_texture_pressed"]
+[connection signal="pressed" from="ActionsRow/CopyCode" to="." method="_on_copy_code_pressed"]
+[connection signal="pressed" from="QuickRow/QuickOpen" to="." method="_on_quick_open_pressed"]
+

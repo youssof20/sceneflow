@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/sceneflow/transitions/slide_transition.gd" id="1_0h4mw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpn2q"]
+
+[node name="SlideLeftTransition" type="CanvasLayer"]
+script = ExtResource("1_0h4mw")
+direction = 0
+
+[node name="Rect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vpn2q")
+
