@@ -6,14 +6,10 @@ Smooth scene transitions for Godot 4.3+ (Lite).
 
 `get_tree().change_scene_to_file()` cuts instantly and can cause a visible black flash. SceneFlow routes all scene changes through a single autoload (`SceneManager`) and swaps scenes at the *covered midpoint* of a transition.
 
-> TODO: Add GIFs
-> - Before: instant cut / black flash
-> - After: SceneFlow fade at midpoint swap
-
 ## Install (Lite)
 
 1. Copy `addons/sceneflow/` into your projects `addons/`.
-2. Enable **SceneFlow** in `Project Settings ’ Plugins`.
+2. Enable **SceneFlow** in `Project Settings ï¿½ Plugins`.
 3. Add the autoload:
    - Name: `SceneManager`
    - Path: `res://addons/sceneflow/scene_manager.gd`
